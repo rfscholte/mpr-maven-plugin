@@ -71,6 +71,7 @@
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mavenVersion>2.2.1</mavenVersion>
+    <scmVersion>1.8</scmVersion>
   </properties>
 
   <dependencies>
@@ -104,6 +105,37 @@
       <artifactId>maven-plugin-api</artifactId>
       <version>${mavenVersion}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugin-tools</groupId>
+      <artifactId>maven-plugin-annotations</artifactId>
+      <version>3.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- scm dependencies -->
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-providers-standard</artifactId>
+      <version>${scmVersion}</version>
+      <type>pom</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-manager-plexus</artifactId>
+      <version>${scmVersion}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-api</artifactId>
+      <version>${scmVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-provider-svn-commons</artifactId>
+      <version>${scmVersion}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
@@ -164,7 +196,16 @@
         <plugin>
           <artifactId>maven-plugin-plugin</artifactId>
           <version>3.2</version>
+          <configuration>
+            <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+          </configuration>
           <executions>
+            <execution>
+              <id>mojo-descriptor</id>
+              <goals>
+                <goal>descriptor</goal>
+              </goals>
+            </execution>
             <execution>
               <id>help-mojo</id>
               <goals>
