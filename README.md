@@ -1,4 +1,4 @@
-Stephen's MongoDb Maven Plugin
-------------------------------
+Multi-Project Release Maven Plugin
+----------------------------------
 
-A plugin for managing a MongoDb instance from within your Apache Maven project.
+A plugin for assisting managing multi-module releases with Maven, see [this thread](http://markmail.org/thread/5xhtroj26x4sv5ug).
